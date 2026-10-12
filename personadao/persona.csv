@@ -1,0 +1,5 @@
+Persona{nombre=Ana, apellido=López, dni=11111111A, edad=25}
+Persona{nombre=Luis, apellido=Pérez, dni=22222222B, edad=30}
+Persona{nombre=Marta, apellido=Gómez, dni=33333333C, edad=22}
+Persona{nombre=Pedro, apellido=Díaz, dni=44444444D, edad=41}
+Persona{nombre=Lucía, apellido=Ruiz, dni=55555555E, edad=19}
