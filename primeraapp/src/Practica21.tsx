@@ -14,11 +14,11 @@ const Practica21 = () => {
   const apostar = (num: number) => {
     let mensaje = "";
     if (num === secreto) {
-      mensaje = '${num} == secreto (¡Acertaste!)';
+      mensaje = "Acertaste:" + {num};
     } else if (num < secreto) {
-      mensaje = "{num} < secreto";
+      mensaje = {num}+"< secreto";
     } else {
-      mensaje = "{num} > secreto";
+      mensaje = {num} +"> secreto";
     }
     
     setMensaje([mensaje]);

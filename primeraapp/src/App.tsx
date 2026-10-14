@@ -7,6 +7,7 @@ import Operacion from './Operacion';
 import Practica10 from './Practica10';
 import Practica14 from './Practica14';
 import Practica21 from './Practica21';
+import Animales from './Animales';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Practica10 tabla={1}/>
       <Practica14/>
       <Practica21/>
+      <Animales/>
       </div>
   );
 }
