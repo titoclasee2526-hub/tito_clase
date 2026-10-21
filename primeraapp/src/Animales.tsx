@@ -59,55 +59,74 @@ const animales: Animales[] = [ //Define el array de los animales con sus nombres
     },
 ];
 
+// Función que devuelve un número aleatorio entre 0 y (cantidad de animales - 1).
+// Math.random() da un decimal entre 0 y 0.99..., al multiplicarlo por la longitud
+// y redondear hacia abajo con Math.floor obtenemos una posición válida del array.
 const numeroAleatorio = (): number => Math.floor(Math.random() * animales.length);
 
 
+// Componente principal del juego.
 const Animales = () => {
 
-    //let botonDeshabilitarBoton: boolean = false;
-    const  [botonDeshabilitado, setBotonDeshabilitado ] = useState(false);
+    // Estado: true cuando el usuario falla y hay que bloquear algo en pantalla.
+    // Empieza en false (nada bloqueado).
+    const [botonDeshabilitado, setBotonDeshabilitado] = useState(false);
 
-    const [numeroSecreto, setNumeroSecreto] = useState<number>(numeroAleatorio)
+    // Estado: posición (índice) del animal secreto dentro del array.
+    // Le pasamos la función numeroAleatorio sin paréntesis para que React la ejecute
+    // solo la primera vez y no en cada render.
+    const [numeroSecreto, setNumeroSecreto] = useState<number>(numeroAleatorio);
+
+    // Estado: mensaje que se muestra al acertar. Empieza vacío.
     const [resultado, setResultado] = useState<string>("");
-    
 
+
+    // Se ejecuta al pulsar un botón de animal. Recibe "i", la posición del animal pulsado.
     const adivinarAnimal = (i: number) => {
 
         if (i === numeroSecreto) {
-           setResultado("¡Acertaste! El animal era " + animales[numeroSecreto].nombreAnimal);
+            // Acierto: guardamos el mensaje con el nombre del animal secreto.
+            setResultado("¡Acertaste! El animal era " + animales[numeroSecreto].nombreAnimal);
         } else {
-            //setBotonDeshabilitado(true);
+            // Fallo: activamos el estado de deshabilitado.
             setBotonDeshabilitado(true);
-
         }
-
-
     }
 
+    // Se ejecuta al pulsar "Reiniciar Partida".
     const botonReiniciar = () => {
-        setNumeroSecreto(numeroAleatorio);
-        alert("Se reinicio la partida");
+        setNumeroSecreto(numeroAleatorio());  // Nuevo animal secreto (con paréntesis: llamamos a la función)
+        setResultado("");                     // Borramos el mensaje anterior
+        setBotonDeshabilitado(false);         // Volvemos a habilitar el botón
+        alert("Se reinició la partida");      // Aviso al usuario
     }
 
+    // Lo que se dibuja en pantalla. El <> ... </> es un contenedor invisible
+    // que permite devolver varios elementos juntos.
     return (
         <>
-            <h1>Adiniva el animal</h1>
+            <h1>Adivina el animal</h1>
 
+            {/* Muestra la definición del animal secreto como pista */}
             <p>{animales[numeroSecreto].definicion}</p>
 
+            {/* Recorre el array y crea un botón por cada animal.
+                key ayuda a React a identificar cada botón.
+                Al hacer clic llama a adivinarAnimal pasando la posición del animal. */}
             {animales.map((animal, i) => (
                 <button key={animal.nombreAnimal} onClick={() => adivinarAnimal(i)}>
                     {animal.nombreAnimal}
                 </button>
-                
             ))}
-            <p> {resultado}</p>
+
+            {/* Aquí aparece el mensaje de acierto (vacío mientras no aciertes) */}
+            <p>{resultado}</p>
+
+            {/* Botón para empezar de nuevo. disabled lo bloquea cuando botonDeshabilitado es true */}
             <button onClick={botonReiniciar} disabled={botonDeshabilitado}>Reiniciar Partida</button>
-
-            
-
         </>
     )
 }
 
+// Permite importar este componente desde otros archivos (por ejemplo App.tsx).
 export default Animales
