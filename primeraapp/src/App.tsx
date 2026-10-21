@@ -1,27 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
+import { useState } from "react";
 import ComponenteApp from './ComponenteApp';
+import PruebaBoton from './PruebaBoton';
 
-import Operacion from './Operacion';
-import Practica10 from './Practica10';
-import Practica14 from './Practica14';
-import Practica21 from './Practica21';
-import Animales from './Animales';
 
 function App() {
   return (
-    <div className="App">
-      <h3>Hola</h3>
-      <ComponenteApp/>
-      <Operacion num1={25} num2 = {3}/>
+    <div>
+      
+      <PruebaBoton/>
+    </div>
+  )
 
-      <Practica10 tabla={1}/>
-      <Practica14/>
-      <Practica21/>
-      <Animales/>
-      </div>
-  );
 }
 
 export default App;
