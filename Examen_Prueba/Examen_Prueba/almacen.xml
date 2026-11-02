@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<empresa>
+    <empleados>
+        <nombre>Knekro</nombre>
+        <id>1</id>
+        <cargo>CEO</cargo>
+    </empleados>
+</empresa>
