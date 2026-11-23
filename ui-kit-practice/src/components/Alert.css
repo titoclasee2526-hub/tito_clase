@@ -1,0 +1,40 @@
+/* Estilos base de la alerta */
+.alert {
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  border-left-width: 5px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.alert strong {
+  display: block;
+  font-weight: 600;
+}
+
+.alert p {
+  margin: 4px 0 0;
+  font-size: 14px;
+}
+
+/* Variantes visuales */
+.alert-success {
+  background-color: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  border-color: #ffc107;
+  color: #856404;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+}
